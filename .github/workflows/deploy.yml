@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,9 +19,11 @@ jobs:
         node-version: '16' # Specify your Node.js version
 
     - name: Install dependencies
+      working-directory: server # Specify the correct directory containing package.json
       run: npm install
 
     - name: Build and run application
+      working-directory: server # Continue to specify the correct directory
       env:
         GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
         SHEET_ID: ${{ secrets.SHEET_ID }}
