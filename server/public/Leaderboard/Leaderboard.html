@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Icarus ELO Leaderboard</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <div id="particles-js"></div>
+
+    <header>
+        <div class="top-bar">
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../home.html">Home</a></li>
+                    <li><a href="../about/about.html">About Us</a></li>
+                    <li><a href="leaderboard.html">Leaderboards</a></li>
+                    <li><a href="../Top/Top.html">Power Rankings</a></li>
+                    <li><a href="../Stats/stats.html">Stats</a></li>
+                </ul>
+            </nav>
+
+            <div class="socials">
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="header-content">
+            <div class="title-search">
+                <h2>LEADERBOARD</h2>
+                <div class="search-container">
+                    <input type="text" id="search-input" placeholder="Search for a player...">
+                </div>
+            </div>
+            <div class="toggle-container">
+                <label for="elo-toggle" class="elo-label"></label>
+                <div class="select-wrapper">
+                    <select id="elo-toggle" class="elo-select">
+                        <option value="Icarus Elo" selected>Icarus Elo</option>
+                        <option value="Online Elo">Online Elo</option>
+                        <option value="Offline Elo">Offline Elo</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="leaderboard">
+            <table class="leaderboard-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Player</th>
+                        <th>ELO</th>
+                        <th>Wins</th>
+                        <th>Losses</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboard-list">
+                    <!-- Player rows will be dynamically inserted here -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; Icarus Gaming</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

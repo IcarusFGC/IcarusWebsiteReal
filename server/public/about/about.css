@@ -1,0 +1,179 @@
+/* Reset margins and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+    background-color: #121212;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Header styling */
+header {
+    width: 100%;
+    background-color: #1f1f1f;
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav {
+    display: flex;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #e91e63;
+}
+
+.socials {
+    display: flex;
+}
+
+.socials a {
+    margin-left: 15px;
+}
+
+.socials img {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+}
+
+.socials img:hover {
+    transform: scale(1.2);
+}
+
+/* Container styling */
+.container {
+    max-width: 1200px;
+    margin: 120px auto;
+    padding: 20px;
+}
+
+/* Section styling */
+.section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 60px;
+    opacity: 0; /* Start hidden */
+    transform: translateY(50px); /* Start slightly offset */
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.section.in-view {
+    opacity: 1; /* Fade in */
+    transform: translateY(0); /* Slide into place */
+}
+
+.section:nth-child(even) .content {
+    order: 2;
+}
+
+.section:nth-child(even) .image {
+    order: 1;
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+}
+
+.content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.content p {
+    font-size: 1.2rem;
+    color: #cccccc;
+}
+
+.image {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+}
+
+.image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Footer styling */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #1f1f1f;
+    color: #ffffff;
+}
+
+footer p {
+    margin: 0;
+}
+
+.search-bar-main {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Existing CSS ... */
+
+/* Search bar in the header */
+.search-bar-header input[type="text"] {
+    padding: 8px;
+    font-size: 1rem;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    width: 200px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Search bar below the ICARUS title */
+.search-bar-main input[type="text"] {
+    padding: 15px;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    width: 300px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.5);
+    margin-right: 10px; /* Keep spacing consistent */
+}

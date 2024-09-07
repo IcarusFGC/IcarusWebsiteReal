@@ -1,0 +1,50 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+    background-color: #121212;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Header Styling */
+header {
+    margin-bottom: 40px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+/* Chart Section Styling */
+.chart-section {
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+/* List Section Styling */
+.list-section {
+    margin-top: 40px;
+}
+
+.list-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+#character-list {
+    list-style: decimal inside;
+    font-size: 1.2rem;
+    text-align: left;
+    margin: 0 auto;
+    max-width: 600px;
+    color: #f0f0f0;
+}

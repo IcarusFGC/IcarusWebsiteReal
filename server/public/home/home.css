@@ -1,0 +1,84 @@
+
+
+/* Container for centering the text and button */
+.container {
+    text-align: center;
+    margin-top: 120px; /* Increase to provide more space below the fixed header */
+    padding: 20px; /* Add padding to ensure elements don’t overlap */
+}
+
+/* Styling for the ICARUS text */
+h1 {
+    font-size: 6rem;
+    letter-spacing: 5px;
+    text-shadow: 0px 5px 20px rgba(0, 0, 0, 0.7);
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(-30px);
+    animation: fadeInDown 2s forwards;
+    color: #ffffff;
+}
+
+/* Search bar below the ICARUS title */
+.search-bar-main {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Existing CSS ... */
+
+/* Search bar in the header */
+.search-bar-header input[type="text"] {
+    padding: 8px;
+    font-size: 1rem;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    width: 200px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Search bar below the ICARUS title */
+.search-bar-main input[type="text"] {
+    padding: 15px;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    width: 300px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.5);
+    margin-right: 10px; /* Keep spacing consistent */
+}
+
+
+/* Styling for the button */
+button {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    color: #1a1a1a;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.5);
+    margin-top: 20px; /* Add margin to prevent overlapping with the search bar */
+    opacity: 0;
+    transition: opacity 2s ease-in-out, transform 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+/* Animation keyframes for fade-in and move-down effect */
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

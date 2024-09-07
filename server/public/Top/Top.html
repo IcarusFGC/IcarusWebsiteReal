@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Icarus Index</title>
+    <!-- Include Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <!-- Include Font Awesome for social media icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Include unified CSS file -->
+    <link rel="stylesheet" href="./Top.css">
+</head>
+<body>
+
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
+
+    <!-- Page Header -->
+    <header>
+        <div class="top-bar">
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../home.html">Home</a></li>
+                    <li><a href="../about/about.html">About Us</a></li>
+                    <li><a href="../Leaderboard/Leaderboard.html">Leaderboards</a></li>
+                    <li><a href="../Top/Top.html">Power Rankings</a></li>
+                </ul>
+            </nav>
+            <div class="search-bar-header">
+                <input type="text" placeholder="Search Player..." id="header-search">
+            </div>
+            <div class="socials">
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Players Section -->
+    <div id="top-players-container">
+        <!-- First place player -->
+        <div id="first-place-container" class="first-place">
+            <!-- Content for first place player will be injected by JavaScript -->
+        </div>
+
+        <!-- Container for 2nd to 8th places -->
+        <div id="second-to-eighth-container">
+            <!-- Second to Fourth places -->
+            <div id="second-third-fourth">
+                <div id="second-player" class="second-player">
+                    <!-- Content for second place player will be injected by JavaScript -->
+                </div>
+                <div id="third-player" class="third-player">
+                    <!-- Content for third place player will be injected by JavaScript -->
+                </div>
+                <div id="fourth-player" class="fourth-player">
+                    <!-- Content for fourth place player will be injected by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Fifth to Eighth places -->
+            <div id="fifth-to-eighth">
+                <div id="fifth-player" class="fifth-player">
+                    <!-- Content for fifth place player will be injected by JavaScript -->
+                </div>
+                <div id="sixth-player" class="sixth-player">
+                    <!-- Content for sixth place player will be injected by JavaScript -->
+                </div>
+                <div id="seventh-player" class="seventh-player">
+                    <!-- Content for seventh place player will be injected by JavaScript -->
+                </div>
+                <div id="eighth-player" class="eighth-player">
+                    <!-- Content for eighth place player will be injected by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaderboard Section for 9th to 32nd Place -->
+    <div id="leaderboard-container" class="leaderboard">
+        <!-- Players ranked 9th to 32nd will be injected here by JavaScript -->
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="Top.js"></script>
+</body>
+</html>

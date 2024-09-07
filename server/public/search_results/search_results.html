@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Search</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Header Section -->
+    <header>
+        <div class="top-bar">
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../home.html">Home</a></li>
+                    <li><a href="../about/about.html">About Us</a></li>
+                    <li><a href="../Leaderboard/Leaderboard.html">Leaderboards</a></li>
+                    <li><a href="../Top/Top.html">Power Rankings</a></li>
+                </ul>
+            </nav>
+            <div class="socials">
+                <a href="#"><img src="images/tik-tok.webp" alt="Tik Tok"></a>
+                <a href="#"><img src="images/X.png" alt="X"></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Search Container -->
+    <div class="search-container">
+        <h1>Player Search</h1>
+        <input type="text" id="search-input" placeholder="Search for a player...">
+    </div>
+
+    <!-- Results Container -->
+    <div class="results-container">
+        <ul class="results-list" id="results-list">
+            <!-- Results will be dynamically inserted here -->
+        </ul>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="search_results.js"></script>
+</body>
+</html>

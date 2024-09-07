@@ -1,0 +1,353 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: #121212;
+    color: #ffffff;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Header */
+header {
+    width: 100%;
+    background-color: #1f1f1f;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.top-bar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links li {
+    font-size: 1rem;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-links a:hover {
+    background-color: #f39c12;
+    color: #000;
+}
+
+.search-bar-header input[type="text"] {
+    padding: 8px 15px;
+    font-size: 1rem;
+    border-radius: 20px;
+    border: 1px solid #444;
+    background-color: #1f1f1f;
+    color: #f3f3f3;
+    width: 200px;
+    outline: none;
+}
+
+.socials {
+    display: flex;
+    align-items: center;
+}
+
+.socials a {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-left: 15px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.socials a:hover {
+    color: #f39c12;
+    transform: scale(1.1);
+}
+
+/* Main Content */
+.main-content {
+    margin-top: 80px;
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* Player Overview Section */
+.player-overview {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.6);
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.player-info {
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+}
+
+.player-info h2 {
+    font-size: 2.5rem;
+    color: #f39c12;
+    margin-bottom: 10px;
+}
+
+.player-info p {
+    font-size: 1.2rem;
+}
+
+.player-stats {
+    display: flex;
+    justify-content: space-around;
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+    gap: 20px;
+}
+
+.player-stats .stat {
+    background-color: #292929;
+    border-radius: 10px;
+    padding: 15px 20px;
+    text-align: center;
+    width: 100px;
+    flex: 1;
+}
+
+.player-stats .stat h3 {
+    font-size: 1.2rem;
+    color: #f39c12;
+    margin-bottom: 10px;
+}
+
+.player-stats .stat p {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Match History Section */
+.match-history {
+    width: 100%;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.6);
+    margin-top: 20px;
+}
+
+.match-history h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #f39c12;
+    text-align: left;
+}
+
+.match-history-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.match-history-item.win {
+    background: linear-gradient(135deg, rgba(39, 174, 96, 0.3), rgba(39, 174, 96, 0)); /* Green gradient for win */
+}
+
+.match-history-item.loss {
+    background: linear-gradient(135deg, rgba(231, 76, 60, 0.3), rgba(231, 76, 60, 0)); /* Red gradient for loss */
+}
+
+.match-history-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.6);
+}
+
+.match-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 20px;
+}
+
+.match-info {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.match-info h4 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #f39c12;
+}
+
+.match-info a {
+    text-decoration: none;
+    color: #f39c12;
+    transition: color 0.3s ease;
+}
+
+.match-info a:hover {
+    color: #f1c40f;
+}
+
+.match-info p.match-score {
+    font-size: 1.8rem;
+    color: #fff;
+    margin-top: 5px;
+}
+
+.match-elo-change {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+}
+
+.match-elo-change .triangle {
+    font-size: 1.5rem;
+    margin-left: 5px;
+}
+
+.match-elo-change.win .triangle {
+    color: #27ae60;
+}
+
+.match-elo-change.loss .triangle {
+    color: #e74c3c;
+}
+
+.tournament-info {
+    flex: 1;
+    text-align: right;
+}
+
+.tournament-info img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+/* Performance Graph Section */
+.performance-graph {
+    width: 100%;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.6);
+    margin-top: 20px;
+}
+
+.performance-graph h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #f39c12;
+    text-align: left;
+}
+
+
+/* Apply unified styling to opponent search bar */
+#opponent-search {
+    padding: 15px;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    width: 100%; /* Adjust width to fit the container */
+    max-width: 300px; /* Ensure it matches the width of other search bars */
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.5);
+    background-color: #333;
+    color: #ffffff;
+    margin-bottom: 20px; /* Adds some space below */
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+#opponent-search:focus {
+    background-color: #444;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+
+canvas {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    margin: 0 auto;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .search-bar-header input[type="text"] {
+        width: 150px;
+    }
+
+    .player-overview {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .player-stats {
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .player-info, .player-stats .stat {
+        width: 100%;
+    }
+
+    .match-details {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .tournament-info {
+        text-align: left;
+        margin-top: 10px;
+    }
+}

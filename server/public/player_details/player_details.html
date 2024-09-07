@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Details</title>
+    <link rel="stylesheet" href="./player_details.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="top-bar">
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../home.html">Home</a></li>
+                    <li><a href="../about/about.html">About Us</a></li>
+                    <li><a href="../Leaderboard/Leaderboard.html">Leaderboards</a></li>
+                    <li><a href="../Top/Top.html">Power Rankings</a></li>
+                </ul>
+            </nav>
+            <div class="search-bar-header">
+                <input type="text" placeholder="Search Player..." id="header-search">
+            </div>
+            <div class="socials">
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Player Overview Section -->
+        <div class="player-overview">
+            <div class="player-info">
+                <h2 id="player-name">Player Name</h2>
+                <p id="player-elo">ELO: 1000</p>
+                <p id="player-rank">(Rank: 0)</p>
+            </div>
+            <div class="player-stats">
+                <div class="stat">
+                    <h3>Total Wins</h3>
+                    <p id="total-wins">0</p>
+                </div>
+                <div class="stat">
+                    <h3>Total Losses</h3>
+                    <p id="total-losses">0</p>
+                </div>
+                <div class="stat">
+                    <h3>Win Rate</h3>
+                    <p id="win-rate">0%</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Match History Section -->
+                <!-- Match History Section -->
+        <div class="match-history">
+            <h2>Match History</h2>
+            <input type="text" id="opponent-search" placeholder="Search by opponent...">
+            <div id="match-history-container">
+                <!-- Match history items will be dynamically inserted here -->
+            </div>
+        </div>
+
+
+        <!-- Performance Graph Section -->
+        <div class="performance-graph">
+            <h2>Performance Graph</h2>
+            <canvas id="performance-chart"></canvas>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="player_details.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+name: Deploy Application
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16' # Specify your Node.js version
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build and run application
+      env:
+        GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+        SHEET_ID: ${{ secrets.SHEET_ID }}
+        PORT: ${{ secrets.PORT }}
+      run: |
+        npm run build
+        npm start
