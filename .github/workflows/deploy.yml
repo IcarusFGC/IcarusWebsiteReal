@@ -16,18 +16,21 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '16' # Specify your Node.js version
+        node-version: '16'
 
     - name: Install dependencies
-      working-directory: server # Specify the correct directory containing package.json
+      working-directory: server
       run: npm install
 
-    - name: Build and run application
-      working-directory: server # Continue to specify the correct directory
+    # If build is not necessary, remove this step
+    # - name: Build application
+    #   working-directory: server
+    #   run: npm run build
+
+    - name: Start application
+      working-directory: server
       env:
         GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
         SHEET_ID: ${{ secrets.SHEET_ID }}
         PORT: ${{ secrets.PORT }}
-      run: |
-        npm run build
-        npm start
+      run: npm start
