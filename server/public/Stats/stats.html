@@ -3,23 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Character Representation Stats</title>
+    <title>Overall Statistics and Trends</title>
     <link rel="stylesheet" href="./stats.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome for icons -->
 </head>
 <body>
     <header>
-        <h1>Top 32 Players' Character Representation</h1>
+        <div class="top-bar">
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../home.html">Home</a></li>
+                    <li><a href="../about/about.html">About Us</a></li>
+                    <li><a href="../Leaderboard/Leaderboard.html">Leaderboards</a></li>
+                    <li><a href="../Top/Top.html">Power Rankings</a></li>
+                    <li><a href="../Tournaments/Tournaments.html">Tournaments</a></li>
+                    <li><a href="../Seeding/seeding.html">Seeding</a></li>
+                    <li><a href="./stats.html">Stats</a></li> <!-- Added Seeding Link -->
+                </ul>
+            </nav>
+            <div class="socials">
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="header-content">
+            <h1>Overall Player Statistics and Character Representation</h1>
+            <p>Explore cumulative data trends across all players.</p>
+        </div>
     </header>
     <main>
-        <section class="chart-section">
-            <canvas id="character-pie-chart"></canvas>
+        <section class="character-representation">
+            <div class="chart-container">
+                <canvas id="character-pie-chart"></canvas>
+            </div>
+            <div class="list-container">
+                <h2>Character Representation</h2>
+                <ol id="character-list"></ol>
+            </div>
         </section>
-        <section class="list-section">
-            <h2>Character Representation</h2>
-            <ol id="character-list"></ol>
+        <section class="chart-section">
+            <canvas id="average-elo-line-chart"></canvas>
+        </section>
+        <section class="chart-section">
+            <canvas id="icarus-elo-distribution-chart"></canvas>
         </section>
     </main>
 
+    <!-- Include necessary scripts -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="stats.js"></script>
 </body>

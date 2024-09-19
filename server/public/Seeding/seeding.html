@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seeding - Player ELO Sorter</title>
+    <link rel="stylesheet" href="./seeding.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome for icons -->
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../home.html">Home</a></li>
+                    <li><a href="../about/about.html">About Us</a></li>
+                    <li><a href="../Leaderboard/Leaderboard.html">Leaderboards</a></li>
+                    <li><a href="../Top/Top.html">Power Rankings</a></li>
+                    <li><a href="../Tournaments/Tournaments.html">Tournaments</a></li>
+                    <li><a href="./seeding.html">Seeding</a></li>
+                    <li><a href="../Stats/stats.html">Stats</a></li>
+                </ul>
+            </nav>
+            <div class="socials">
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="header-content">
+            <h1>Seeding - Player ELO Sorter</h1>
+            <p>Enter a list of player names or start.gg link to sort entrants by ELO.</p>
+        </div>
+    </header>
+    <main>
+        <section class="elo-sorter">
+            <form id="elo-form">
+                <textarea id="player-names" rows="10" placeholder="Enter player names, one per line"></textarea>
+                <button type="submit">Sort by ELO</button>
+            </form>
+            <div class="results-container">
+                <h2>Sorted Players by ELO</h2>
+                <ol id="sorted-players"></ol>
+            </div>
+        </section>
+    </main>
+
+    <!-- Include necessary scripts -->
+    <script src="elo-sorter.js"></script>
+</body>
+</html>

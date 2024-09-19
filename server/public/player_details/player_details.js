@@ -123,12 +123,14 @@ function drawPerformanceChart(matches) {
 
 // Function to get the appropriate image based on the tournament name
 function getTournamentImage(tournamentName) {
-    if (!tournamentName) return '../Images/default-tournament.png';
+    if (!tournamentName) return './Images/default-tournament.png';
     switch (tournamentName.toLowerCase()) {
         case 'tns':
-            return '../Images/TNS.png';
+            return './Images/TNS.png';
+        case '9moons':
+            return './Images/9M.png';
         default:
-            return '../Images/default-tournament.png';
+            return './Images/default-tournament.png';
     }
 }
 

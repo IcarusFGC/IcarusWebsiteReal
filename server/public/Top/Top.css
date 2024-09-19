@@ -127,7 +127,7 @@ header {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     background-repeat: no-repeat;
     width: 35vw;
-    height: 35vw;
+    height: 42vw;
     cursor: pointer;
     background-color: #2e313e;
     border: 7px solid #ffcc00;
@@ -197,7 +197,6 @@ header {
 }
 
 .fifth-player, .sixth-player, .seventh-player, .eighth-player {
-    opacity: 90%;
     position: relative;
     z-index: 8;
     border-radius: 15px;
@@ -212,12 +211,37 @@ header {
     padding: 15px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     background-repeat: no-repeat;
-    width: 23%;
-    height: 100%;
+    width: 23%; /* Set a fixed width */
+    height: 300px; /* Set a fixed height */
     cursor: pointer;
     background-color: #2e313e;
     border: 5px solid #ffffff;
     animation: pulseWhite 2s infinite, swing 5s infinite ease-in-out;
+}
+
+/* Styling for the player name */
+.fifth-player .player-name,
+.sixth-player .player-name,
+.seventh-player .player-name,
+.eighth-player .player-name {
+    font-size: 1.2rem; /* Set a base font size */
+    max-width: 90%; /* Constrain width */
+    white-space: nowrap; /* Prevent wrapping */
+    overflow: hidden; /* Hide overflow */
+    text-overflow: ellipsis; /* Show ellipsis for overflowed text */
+    text-align: center; /* Center text */
+    margin: 5px 0; /* Add margin for spacing */
+    line-height: 1.2; /* Set line height */
+}
+
+/* Responsive adjustment: Shrink font size if text is too long */
+@media (max-width: 768px) {
+    .fifth-player .player-name,
+    .sixth-player .player-name,
+    .seventh-player .player-name,
+    .eighth-player .player-name {
+        font-size: 1rem; /* Reduce font size on smaller screens */
+    }
 }
 
 /* Overlay inside the player box */
@@ -294,6 +318,11 @@ header {
     background-repeat: no-repeat;
     opacity: 0.7;
 }
+.character-Testement {
+    background-size: 100%; /* Adjust size */
+    background-position: 20% 30%; /* Custom position */
+}
+
 
 .leaderboard-player .player-rank {
     flex: 1;

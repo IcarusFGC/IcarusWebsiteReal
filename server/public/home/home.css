@@ -1,46 +1,172 @@
-
-
-/* Container for centering the text and button */
-.container {
-    text-align: center;
-    margin-top: 120px; /* Increase to provide more space below the fixed header */
-    padding: 20px; /* Add padding to ensure elements don’t overlap */
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* Styling for the ICARUS text */
-h1 {
-    font-size: 6rem;
-    letter-spacing: 5px;
-    text-shadow: 0px 5px 20px rgba(0, 0, 0, 0.7);
-    margin-bottom: 20px;
-    opacity: 0;
-    transform: translateY(-30px);
-    animation: fadeInDown 2s forwards;
+/* Unified Body Styling */
+body {
+    padding-top: 120px; /* Adjust this value to match the header height */
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+    background-color: #121212;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    background-image: url('../background.png'); /* Replace with your image path */
+    background-size: cover; /* Ensures the background image covers the entire viewport */
+    background-position: center center; /* Centers the background image */
+    background-attachment: fixed; /* Keeps the background fixed during scrolling */
+    background-repeat: no-repeat; /* Prevents the background from repeating */
+}
+
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    top: 0;
+    left: 0;
+}
+.search-bar-main {
+    margin-top: 100px; /* Adjust as necessary */
+}
+/* Unified Header Styling */
+header {
+    width: 100%;
+    background-color: #1f1f1f;
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    text-align: center;
+    border-bottom: 2px solid #333;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #282828;
+    border-radius: 8px;
+}
+
+/* Navigation Links */
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.nav-links li {
+    margin-right: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #e91e63;
+    transform: scale(1.1);
+}
+
+/* Social Icons */
+.socials {
+    display: flex;
+    gap: 15px;
+}
+
+.socials img,
+.socials i {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
     color: #ffffff;
 }
 
-/* Search bar below the ICARUS title */
-.search-bar-main {
-    margin-top: 20px;
+.socials img:hover,
+.socials i:hover {
+    transform: scale(1.2);
+    color: #ffcc00;
+}
+
+/* Unified Container Styling */
+.container {
+    max-width: 1200px;
+    margin: 120px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Section Styling */
+.section {
     display: flex;
-    justify-content: center;
+    align-items: center;
+    margin-bottom: 60px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease, transform 1s ease;
 }
 
-/* Existing CSS ... */
-
-/* Search bar in the header */
-.search-bar-header input[type="text"] {
-    padding: 8px;
-    font-size: 1rem;
-    border-radius: 20px;
-    border: none;
-    outline: none;
-    width: 200px;
-    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.5);
+.section.in-view {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-/* Search bar below the ICARUS title */
-.search-bar-main input[type="text"] {
+.content {
+    flex: 1;
+    padding: 20px;
+}
+
+.content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.content p {
+    font-size: 1.2rem;
+    color: #cccccc;
+}
+
+.image {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+}
+
+.image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #1f1f1f;
+    color: #ffffff;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Unified Search Bar Styling */
+.search-bar-header input[type="text"],
+.search-bar-main input[type="text"],
+.search-container input[type="text"] {
     padding: 15px;
     font-size: 1.2rem;
     border-radius: 30px;
@@ -48,11 +174,20 @@ h1 {
     outline: none;
     width: 300px;
     box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.5);
-    margin-right: 10px; /* Keep spacing consistent */
+    background-color: #333;
+    color: #ffffff;
+    margin-right: 10px;
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
+.search-bar-header input[type="text"]:focus,
+.search-bar-main input[type="text"]:focus,
+.search-container input[type="text"]:focus {
+    background-color: #444;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
 
-/* Styling for the button */
+/* Button Styling */
 button {
     padding: 15px 30px;
     font-size: 1.2rem;
@@ -62,7 +197,7 @@ button {
     border-radius: 50px;
     cursor: pointer;
     box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.5);
-    margin-top: 20px; /* Add margin to prevent overlapping with the search bar */
+    margin-top: 20px;
     opacity: 0;
     transition: opacity 2s ease-in-out, transform 0.3s ease;
 }
@@ -71,7 +206,7 @@ button:hover {
     transform: scale(1.05);
 }
 
-/* Animation keyframes for fade-in and move-down effect */
+/* Animation Keyframes */
 @keyframes fadeInDown {
     0% {
         opacity: 0;
@@ -82,3 +217,161 @@ button:hover {
         transform: translateY(0);
     }
 }
+
+/* Leaderboard Specific Styles */
+.leaderboard {
+    margin: 40px auto;
+    max-width: 1200px;
+    padding: 30px;
+    background-color: #1C1C1C;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+}
+
+.leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #FFFFFF;
+}
+
+.leaderboard-table th,
+.leaderboard-table td {
+    padding: 15px 20px;
+    text-align: left;
+    border-bottom: 1px solid #444;
+}
+
+.leaderboard-table th {
+    background-color: #282828;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.leaderboard-table tbody tr {
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.leaderboard-table tbody tr:hover {
+    background-color: #333;
+    transform: scale(1.02);
+}
+
+/* Remove default blue color for all links */
+.leaderboard a {
+    color: #ffffff; /* White text color */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+/* Hover effect to ensure links stay white */
+.leaderboard a:hover {
+    color: #ffffff;
+}
+
+/* Glow effect for top 25 players */
+.leaderboard-table .top-25-glow a {
+    color: #ffffff;
+    text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #1DB954; /* Green glow */
+}
+
+/* Additional class for hovering glow effect */
+.leaderboard-table .top-25-glow a:hover {
+    text-shadow: 0 0 15px #ffffff, 0 0 25px #1DB954, 0 0 35px #1DB954;
+}
+
+/* Player Details Specific Styles */
+.player-overview, .match-history, .performance-graph {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.6);
+    margin-top: 20px;
+}
+
+.player-info h2, .match-history h2, .performance-graph h2 {
+    font-size: 2rem;
+    color: #f39c12;
+    margin-bottom: 20px;
+}
+
+.player-stats .stat, .match-details {
+    background-color: #292929;
+    border-radius: 10px;
+    padding: 15px 20px;
+}
+
+/* Top 8 Player Boxes Specific Styles */
+#top-players-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+    min-height: 100vh;
+    gap: 20px;
+    background: transparent;
+}
+
+/* First place styling */
+.first-place {
+    position: relative;
+    z-index: 10;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    background-size: contain;
+    background-position: center center;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 1);
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-repeat: no-repeat;
+    width: 35vw;
+    height: 35vw;
+    cursor: pointer;
+    background-color: #2e313e;
+    border: 7px solid #ffcc00;
+    animation: pulseGold 2s infinite, swing 5s infinite ease-in-out;
+    opacity: 90%;
+}
+
+/* Right column containing 2nd-8th places */
+#second-to-eighth-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: calc(65vw - 20px);
+    height: 100%;
+}
+
+/* Second to fourth places - larger boxes */
+#second-third-fourth {
+    display: flex;
+    gap: 20px;
+    height: 60%;
+}
+
+.second-player, .third-player, .fourth-player {
+    opacity: 90%;
+    position: relative;
+    z-index: 9;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    background-size: contain;
+    background-position: center;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+    padding: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-repeat: no-repeat;
+    width: 20vw;
+    height: 25vw;
+    cursor: pointer;
+    background-color: #2e313e;
+    border: 5px solid;
+}
+

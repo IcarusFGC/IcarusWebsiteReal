@@ -105,10 +105,8 @@ particlesJS('particles-js', {
     "retina_detect": true
 });
 
-const sheetId = '18FhsiUln4p90my0G1JX4NdwWvlqzKrTE-_Mqxc44COk';
-const apiKey = 'AIzaSyBZMGrx13oqpIoGQdALhdvVlFnGFkW31Do';
+// Fetching data securely without exposing API keys
 const range = 'Player Details!A2:H';
-const matchHistoryRange = 'Match History!A2:J';
 let matchHistoryData = [];
 
 document.addEventListener('DOMContentLoaded', async function () {
@@ -116,24 +114,46 @@ document.addEventListener('DOMContentLoaded', async function () {
     fetchPlayerData();
 });
 
+// Search function to handle search action and redirect to the search results page
+function handleSearch(query) {
+    if (query) {
+        window.location.href = `../search_results/search_results.html?query=${encodeURIComponent(query)}`;
+    }
+}
+
+// Add event listener to the header search bar
+document.getElementById('header-search').addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        const query = event.target.value.trim();
+        handleSearch(query);
+    }
+});
+
 async function fetchPlayerData() {
     try {
+        // Fetch player data securely from the server endpoint
         const response = await fetch('/api/data?range=Player%20Details!A2:H'); // Fetch from server endpoint
         const data = await response.json();
-        const rows = data.values;
+        const rows = data.values || [];
 
         console.log('Fetched rows from server:', rows); // Log the entire fetched data
 
         const players = rows.map((row) => {
             console.log('Processing row:', row); // Log each row to check structure
+            const totalWins = parseInt(row[5], 10); // Player's total wins
+            const totalLosses = parseInt(row[6], 10); // Player's total losses
+            const winLossPercentage = calculateWinLossPercentage(totalWins, totalLosses); // Calculated win-loss percentage
+
             return {
                 name: row[0], // Player's name
-                elo: parseFloat(row[2]).toFixed(1), // Player's Elo
-                totalWins: parseInt(row[3], 10), // Player's total wins
-                totalLosses: parseInt(row[4], 10), // Player's total losses
+                elo: parseFloat(row[2]).toFixed(1), // Player's Online Elo
+                totalWins, // Player's total wins
+                totalLosses, // Player's total losses
+                winLossPercentage, // Calculated win-loss percentage
                 character: row[7], // Character name
-                twitch: row[6], // Twitch link
-                twitter: row[7] // Twitter link
+                twitch: row[8], // Twitch link
+                twitter: row[9] // Twitter link
             };
         });
 
@@ -155,7 +175,6 @@ async function fetchPlayerData() {
     }
 }
 
-
 async function fetchMatchHistory() {
     try {
         const response = await fetch('/api/data?range=Match%20History!A2:J'); // Fetch from server endpoint
@@ -166,50 +185,9 @@ async function fetchMatchHistory() {
     }
 }
 
-
-function calculateWinLossRecord(playerName) {
-    let wins = 0;
-    let losses = 0;
-
-    matchHistoryData.forEach(match => {
-        const [player1, player1Score, player2, player2Score] = match;
-
-        if (player1 === playerName || player2 === playerName) {
-            const playerIsPlayer1 = player1 === playerName;
-            const playerWon = playerIsPlayer1 ? parseInt(player1Score) > parseInt(player2Score) : parseInt(player2Score) > parseInt(player1Score);
-
-            if (playerWon) {
-                wins++;
-            } else {
-                losses++;
-            }
-        }
-    });
-
-    const winLossPercentage = calculateWinLossPercentage(wins, losses);
-    return { wins, losses, winLossPercentage };
-}
-
-function calculateWinLossPercentage(wins, losses) {
-    const totalGames = wins + losses;
-    return totalGames === 0 ? '0%' : `${((wins / totalGames) * 100).toFixed(2)}%`;
-}
-
-function getTopDefeatedPlayers(playerName) {
-    const defeatedPlayers = [];
-
-    matchHistoryData.forEach(match => {
-        const [player1, player1Score, player2, player2Score, player1Elo, player2Elo] = match;
-        if (player1 === playerName && parseInt(player1Score) > parseInt(player2Score)) {
-            defeatedPlayers.push({ name: player2, elo: parseFloat(player2Elo) });
-        } else if (player2 === playerName && parseInt(player2Score) > parseInt(player1Score)) {
-            defeatedPlayers.push({ name: player1, elo: parseFloat(player1Elo) });
-        }
-    });
-
-    // Sort by ELO and return the top 3 defeated players
-    defeatedPlayers.sort((a, b) => b.elo - a.elo);
-    return defeatedPlayers.slice(0, 3);
+function calculateWinLossPercentage(totalWins, totalLosses) {
+    const totalGames = totalWins + totalLosses;
+    return totalGames === 0 ? '0%' : `${((totalWins / totalGames) * 100).toFixed(2)}%`;
 }
 
 function renderTopPlayers(players) {
@@ -228,10 +206,11 @@ function renderTopPlayers(players) {
         const container = document.getElementById(containers[index]);
         const imagePath = `./Images/${player.character}.png`;
 
-        // Log the path to ensure it's correct
         console.log(`Setting background image for ${player.name} with path: ${imagePath}`);
 
-        // Apply the character image based on rank
+        // Store player data directly on the container element for easy access
+        container.playerData = player;
+
         container.style.backgroundImage = `url('${imagePath}')`;
 
         container.innerHTML = `
@@ -244,8 +223,7 @@ function renderTopPlayers(players) {
             <div class="player-overlay"></div>
         `;
 
-        // Add event listener for overlay toggle
-        container.addEventListener('click', () => toggleOverlay(container, player.name));
+        container.addEventListener('click', () => toggleOverlay(container));
     });
 }
 
@@ -254,15 +232,21 @@ function renderLeaderboard(players) {
     container.innerHTML = ''; // Clear container before rendering
 
     players.forEach((player) => {
-        const { wins, losses, winLossPercentage } = calculateWinLossRecord(player.name);
-
         const playerDiv = document.createElement('div');
         playerDiv.classList.add('leaderboard-player');
+
+        // Add a custom class based on the character's name for special styling
+        const characterClass = `character-${player.character.toLowerCase().replace(/\s+/g, '-')}`;
+        playerDiv.classList.add(characterClass);
+
         playerDiv.style.backgroundImage = `url('./Images/${player.character}.png')`;
         playerDiv.style.backgroundSize = '40%';
-        playerDiv.style.backgroundPosition = '100% 20%';
+        playerDiv.style.backgroundPosition = '100% 20%'; // Default position
         playerDiv.style.backgroundRepeat = 'no-repeat';
         playerDiv.style.opacity = '0.7';
+
+        // Store player data on the div for easy access
+        playerDiv.playerData = player;
 
         playerDiv.innerHTML = `
             <div class="player-rank">${player.rank}</div>
@@ -270,29 +254,48 @@ function renderLeaderboard(players) {
             <div class="player-elo">${player.elo}</div>
             <div class="player-winrate">
                 <div class="win-rate-bar smaller">
-                    <div class="fill-bar" style="width: ${winLossPercentage};"></div>
+                    <div class="fill-bar" style="width: ${player.winLossPercentage};"></div>
                 </div>
-                <div class="winrate-percentage">${winLossPercentage}</div>
+                <div class="winrate-percentage">Win Rate: ${player.winLossPercentage}</div>
             </div>
             <div class="socials">
                 <a href="${player.twitter}" target="_blank"><i class="fab fa-twitter"></i></a>
                 <a href="${player.twitch}" target="_blank"><i class="fab fa-twitch"></i></a>
             </div>
         `;
+
+        adjustFontSize(playerDiv.querySelector('.player-name')); // Adjust font size based on content length
+        playerDiv.addEventListener('click', () => toggleOverlay(playerDiv));
         container.appendChild(playerDiv);
     });
 
     observeElements();
 }
 
-function toggleOverlay(playerDiv, playerName) {
+// Function to adjust the font size if the text is too long
+function adjustFontSize(element) {
+    let fontSize = 1.2; // Start with a base font size
+    while (element.scrollWidth > element.clientWidth && fontSize > 0.8) {
+        fontSize -= 0.1;
+        element.style.fontSize = `${fontSize}rem`;
+    }
+}
+
+
+function toggleOverlay(playerDiv) {
     const overlay = playerDiv.querySelector('.player-overlay');
+    const player = playerDiv.playerData; // Access player data from the div
+
+    if (!player) {
+        console.error('Player data not found for:', playerDiv);
+        return;
+    }
+
     if (overlay.classList.contains('visible')) {
         overlay.classList.remove('visible');
         overlay.innerHTML = '';
     } else {
-        const { wins, losses, winLossPercentage } = calculateWinLossRecord(playerName);
-        const topDefeatedPlayers = getTopDefeatedPlayers(playerName);
+        const { totalWins, totalLosses, winLossPercentage } = player;
 
         overlay.innerHTML = `
             <div class="overlay-content">
@@ -300,10 +303,9 @@ function toggleOverlay(playerDiv, playerName) {
                 <div class="win-rate-bar">
                     <div class="fill-bar" style="width: ${winLossPercentage};"></div>
                 </div>
-                <p>Wins: ${wins} | Losses: ${losses}</p>
-                <p><strong>Top 3 ELO Defeated:</strong></p>
+                <p>Wins: ${totalWins} | Losses: ${totalLosses}</p>
+                
                 <ul>
-                    ${topDefeatedPlayers.map(player => `<li>${player.name} (ELO: ${player.elo})</li>`).join('')}
                 </ul>
             </div>
         `;

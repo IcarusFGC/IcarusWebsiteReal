@@ -1,9 +1,8 @@
-import 'dotenv/config'; // Load environment variables from .env
 import express from 'express'; // Import Express
 import fetch from 'node-fetch'; // Import node-fetch to fetch data
 
 const app = express(); // Create an instance of Express
-const port = process.env.PORT || 3000; // Use the port from .env or default to 3000
+const port = process.env.PORT || 3000; // Use the port from environment variables or default to 3000
 
 // Middleware to serve static files from the 'public' directory
 app.use(express.static('public'));
@@ -16,8 +15,8 @@ app.get('/', (req, res) => {
 // Endpoint to fetch data from Google Sheets
 app.get('/api/data', async (req, res) => {
     try {
-        const sheetId = process.env.SHEET_ID;
-        const apiKey = process.env.GOOGLE_API_KEY;
+        const sheetId = process.env.SHEET_ID; // Read Sheet ID from environment variables
+        const apiKey = process.env.GOOGLE_API_KEY; // Read Google API key from environment variables
         const range = req.query.range || 'Player Details!A2:G'; // Default range if not specified
         const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`;
 
